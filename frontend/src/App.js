@@ -8,11 +8,25 @@ import Personality from './Personality';
 import QuestDetails from './QuestDetails';
 
 function App() {
-  const [user, setUser] = useState(null);
+  {/* const [user, setUser] = useState(null); */}
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const user = {
+    "name": "Victoria",
+    "type": "Adventurer",
+    "profileComplete": 60,
+    "sections": {
+        "background": 10,
+        "interests": 0,
+        "preferences": 0,
+        "values": 0,
+        "traits": 0,
+        "perspectives": 0
+    }
+}
+
+  {/* useEffect(() => {
     fetch('/api/profile')
       .then(res => {
         if (!res.ok) {
@@ -29,10 +43,10 @@ function App() {
         setError(error.message);
         setLoading(false);
       });
-  }, []);
+  }, []); 
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <div>Error: {error}</div>; */}
 
   return (
     <Router>
