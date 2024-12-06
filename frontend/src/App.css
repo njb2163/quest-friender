@@ -584,28 +584,5 @@ a {
 
 
 
-/* QuestDetails styling */
-.quest-details-container {
-  flex: 1; /* Allows it to fill the available space */
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Adjust as needed */
-  text-align: center;
-}
 
-.quest-image {
-  width: 100%; /* Adjust as needed, e.g., 80% or a fixed width */
-  max-width: 500px; /* Keeps the image from becoming too large */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 20px;
-  border-radius: 8px; /* Optional: Rounded corners */
-}
 
-.quest-description {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.5;
-  margin: 0 20px; /* Adds some space on the sides */
-}

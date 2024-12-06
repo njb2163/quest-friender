@@ -1,9 +1,22 @@
 import './App.css';
+import { useLocation } from 'react-router-dom';
 
 function Header() {
+    const location = useLocation();
+
+    const getHeaderText = () => {
+        switch(location.pathname) {
+            case '/':
+                return 'PROFILE';
+            case '/questDetails':
+                return 'QUESTS';
+            default:
+                return 'PROFILE';
+        }
+    };
+
     return (
         <header>
-            <img className="avatar" src="img/avatar-gencb8809668058c733c9107f2e80f188d9-1.png" />
             <div className="rectangle"></div>
             <div className="status-bar">
                 <div className="left-side">
@@ -17,16 +30,17 @@ function Header() {
                 </div>
                 <div className="right-side">
                     <div className="signal-wifi-battery">
-                        <img className="icon-mobile-signal" src="img/mobile-signal.svg" />
-                        <img className="wifi" src="img/wifi.svg" />
-                        <img className="statusbar-battery" src="img/statusbar-battery.svg" />
+                        <img src={require("./images/rightside.png")} alt="status icons" />
                     </div>
                 </div>
             </div>
             <div className="frame">
-                <div className="profile-wrapper"><div className="profile">PROFILE</div></div>
+                <div className="profile-wrapper">
+                    <div className="profile">{getHeaderText()}</div>
+                </div>
             </div>
         </header>
     );
 }
+
 export default Header;
