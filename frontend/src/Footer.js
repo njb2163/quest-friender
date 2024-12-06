@@ -7,8 +7,8 @@ function Footer() {
     return (
         <footer>
             <div className="group-2">
-                <img className="vuesax-outline-bag" src="img/bag-2.svg" />
-                <img className="vuesax-outline" src="img/picture-frame.svg" />
+                <img className="vuesax-outline-bag" src={require("./images/profile.png")} />
+                <img className="vuesax-outline" src={require("./images/quests.png")}/>
                 <div className="frame-2">
                     <div className="overlap-group-wrapper">
                         <div className="overlap-group">
@@ -20,7 +20,7 @@ function Footer() {
                     </div>
                     <div className="rectangle-3"></div>
                 </div>
-                <img className="vuesax-outline-2" src="img/barcode.svg" />
+                <img className="vuesax-outline-2" src={require("./images/messages.png")} />
             </div>
         </footer>
     );
