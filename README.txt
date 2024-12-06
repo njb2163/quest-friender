@@ -1,8 +1,9 @@
 Steps one by one.
 
-1. cd frontend
-2. npm install
-3. npm run start-all
+1. pip install -r requirements.txt
+2. cd frontend
+3. npm install
+4. npm run start-all
 
 This will start both the Flask server and the React server!
 
