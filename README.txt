@@ -1,3 +1,9 @@
-Inside of frontend, run the following command:
+cd backend
+python3 -m venv venv
+# On Windows use:
+# venv\Scripts\activate (or "/")
+# On Unix/MacOS use:
+source venv/bin/activate
+pip install flask python-dotenv
 
-npm run start-all
+also pip install flask-cors
