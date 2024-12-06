@@ -1,9 +1,9 @@
-cd backend
-python3 -m venv venv
-# On Windows use:
-# venv\Scripts\activate (or "/")
-# On Unix/MacOS use:
-source venv/bin/activate
-pip install flask python-dotenv
+Steps one by one.
 
-also pip install flask-cors
+1. cd frontend
+2. npm install
+3. npm run start-all
+
+This will start both the Flask server and the React server!
+
+Thanks!
