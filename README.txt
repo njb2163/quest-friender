@@ -17,7 +17,7 @@ http://localhost:5000/api/profile
 
 ----------------------------------------------------------------
 
-Step 5. However, for now, run the following in terminal:
+Step 5. However, for now, please run the following in the terminal:
 
 6. cd frontend
 7. npm install
