@@ -1,6 +1,6 @@
 Steps one-by-one:
 
-This is in the works... (For Checkpoint 4 skip to Step 5.)
+This will run both the Flask server and React server: (For Checkpoint 4 skip to Step 5.)
 
 1. pip install -r requirements.txt
 2. cd frontend
