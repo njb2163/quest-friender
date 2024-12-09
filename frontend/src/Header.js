@@ -6,12 +6,16 @@ function Header() {
 
     const getHeaderText = () => {
         switch(location.pathname) {
-            case '/':
+            case '/profile':
                 return 'PROFILE';
+            case '/messages':
+                return 'MESSAGES';
+            case '/settings':
+                return 'SETTINGS';
             case '/questDetails':
                 return 'QUESTS';
             default:
-                return 'PROFILE';
+                return '';
         }
     };
 
