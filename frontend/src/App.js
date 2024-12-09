@@ -5,48 +5,58 @@ import './QuestDetails'
 import Header from './Header';
 import Footer from './Footer';
 import Personality from './Personality';
+import Messages from './Messages';
 import QuestDetails from './QuestDetails';
 
 function App() {
-  {/* const [user, setUser] = useState(null); */}
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [loadingUser, setLoadingUser] = useState(true);
+  const [loadingMessages, setLoadingMessages] = useState(true);
   const [error, setError] = useState(null);
 
-  const user = {
-    "name": "Victoria",
-    "type": "Adventurer",
-    "profileComplete": 60,
-    "sections": {
-        "background": 10,
-        "interests": 0,
-        "preferences": 0,
-        "values": 0,
-        "traits": 0,
-        "perspectives": 0
-    }
-}
 
-  {/* useEffect(() => {
+
+  useEffect(() => {
     fetch('/api/profile')
       .then(res => {
         if (!res.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Failed to fetch profile');
         }
         return res.json();
       })
       .then(data => {
         setUser(data);
-        setLoading(false);
+        setLoadingUser(false);
       })
       .catch(error => {
         console.error('Error fetching profile:', error);
         setError(error.message);
-        setLoading(false);
+        setLoadingUser(false);
       });
-  }, []); 
+  }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>; */}
+  useEffect(() => {
+    fetch('/api/messages')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch messages');
+        }
+        return res.json();
+      })
+      .then(data => {
+        setMessages(data);
+        setLoadingMessages(false);
+      })
+      .catch(error => {
+        console.error('Error fetching messages:', error);
+        setError(error.message);
+        setLoadingMessages(false);
+      });
+  }, []);
+
+  if (loadingUser || loadingMessages) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <Router>
@@ -55,7 +65,8 @@ function App() {
           <Header />
           <main className="main-content">
             <Routes>
-              <Route path="/" element={<Personality user={user} />} />
+              <Route path="/profile" element={<Personality user={user} />} />
+              <Route path="/messages" element={<Messages messages={messages}/>} />
               <Route path="/questDetails" element={<QuestDetails />} />
             </Routes>
           </main>

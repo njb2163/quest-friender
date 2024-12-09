@@ -1,5 +1,4 @@
 import './App.css';
-import './QuestDetails.css';
 import { useState } from 'react';
 
 function QuestDetails() {
