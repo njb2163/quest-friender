@@ -12,7 +12,7 @@ function Header() {
                 return 'MESSAGES';
             case '/settings':
                 return 'SETTINGS';
-            case '/questDetails':
+            case '/quests':
                 return 'QUESTS';
             default:
                 return '';
