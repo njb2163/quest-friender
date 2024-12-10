@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Personality from './Personality';
 import Messages from './Messages';
 import QuestDetails from './QuestDetails';
+import Settings from './Settings';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -66,6 +67,7 @@ function App() {
           <main className="main-content">
             <Routes>
               <Route path="/profile" element={<Personality user={user} />} />
+              <Route path="/settings" element={<Settings user={user} />} />
               <Route path="/messages" element={<Messages messages={messages}/>} />
               <Route path="/questDetails" element={<QuestDetails />} />
             </Routes>
