@@ -8,7 +8,7 @@ function Personality({ user }) {
       <div className="overlap">
         <img className="profile-background-img" src={require(`./${"images/Victoria-background.png"}`)} />
         <div className="group">
-          <div className="text-wrapper">{user.name}</div>
+          <div className="text-wrapper">{user.first_name}</div>
           <div className="text-wrapper-2">{user.type}</div>
         </div>
         <div className="text-wrapper-3">Profile complete {user.profileComplete}%</div>
