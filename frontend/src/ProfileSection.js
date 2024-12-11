@@ -1,63 +1,146 @@
 import './App';
 import './ProfileSection.css';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router';
+import React, { useState, useEffect } from 'react';
+import QuestionOption from './QuestionOption';
+import ProgressBar from './ProgressBar'
+
+const data = [
+    {
+        "category": "background",
+        "questions": [
+            {
+                "id": 1,
+                "question_content": "How many siblings did you have growing up?",
+                "multiple_choice": true,
+                "options": ["0", "1", "2", "3", "4+"]
+            },
+            {
+                "id": 2,
+                "question_content": "What country do you call home?",
+                "multiple_choice": false,
+                "options": []
+            },
+            {
+                "id": 3,
+                "question_content": "What was your first language?",
+                "multiple_choice": false,
+                "options": []
+            },
+            {
+                "id": 4,
+                "question_content": "What other languages do you speak?",
+                "multiple_choice": false,
+                "options": []
+            },
+            {
+                "id": 5,
+                "question_content": "How many siblings do you have?",
+                "multiple_choice": false,
+                "options": []
+            }
+        ]
+    },
+    {
+        "category": "interests",
+        "questions": [
+            {
+                "id": 1,
+                "question_content": "How many siblings do you have?",
+                "multiple_choice": true,
+                "options": ["1", "2", "3", "4", "5"]
+            },
+            {
+                "id": 2,
+                "question_content": "What country do you call home?",
+                "multiple_choice": false,
+                "options": []
+            },
+            {
+                "id": 3,
+                "question_content": "What was your first language?",
+                "multiple_choice": false,
+                "options": []
+            },
+            {
+                "id": 4,
+                "question_content": "What other languages do you speak?",
+                "multiple_choice": false,
+                "options": []
+            },
+            {
+                "id": 5,
+                "question_content": "How many siblings do you have?",
+                "multiple_choice": false,
+                "options": []
+            }
+        ]
+    }
+];
 
 function ProfileSection() {
     const { profileSectionName } = useParams();
-    // after this, find the information for profileSectionName and pass onto components
+    
+    const sectionData = data.find(item => item.category === profileSectionName);
+
+    let [index, setIndex] = useState(0);
+    let [question, setQuestion] = useState(sectionData.questions[index].question_content);
+    let [completedQuestions, setCompletedQuestions] = useState([true, false, false, false, false])
+
+    const navigate = useNavigate();
+
+    function handleNextClick() {
+        if (index >= 4) {
+            navigate('/profile'); 
+        }
+        else {
+            setIndex(prevIndex => prevIndex + 1); 
+            setQuestion(sectionData.questions[index + 1].question_content);
+            
+            const newCompletedQuestions = [...completedQuestions];
+            newCompletedQuestions[index + 1] = true;
+            setCompletedQuestions(newCompletedQuestions);
+        }
+    }
 
     return (
         <div className="profile">
             <div className="phone-screen-div">
                 <div className="question-block">
-                    <div className="question">How many siblings did you have growing up?</div>
-                    <div className="next-prev-buttons">
-                            <button className="prev-button">Previous</button>
-                            <button className="next-button">Next</button>
-                    </div>
+
+                    <div className="question">{question}</div> 
+        
                     <div className="question-response-options">
-                        <div className="response-button">
-                            <div className="response-content">
-                                <div className="response-text-wrapper">0</div>
+                        { sectionData.questions[index].multiple_choice === true ? (
+                            sectionData.questions[index].options.map((option, index) => (
+                                <QuestionOption key = {index} option = {option}/>
+                            ))
+                        ) : (
+                            <div class="open-question">
+                                <div class="open-question-box">
+                                    <input type="text" class="open-question-wrapper" placeholder="Enter response here..." />
+                                </div>
                             </div>
-                        </div>
-                        <div className="response-button">
-                            <div className="response-content">
-                                <div className="response-text-wrapper">1</div>
-                            </div>
-                        </div>
-                        <div className="response-button">
-                            <div className="response-content">
-                                <div className="response-text-wrapper">2</div>
-                            </div>
-                        </div>
-                        <div className="response-button">
-                            <div className="response-content">
-                                <div className="response-text-wrapper">3</div>
-                            </div>
-                        </div>
-                        <div className="response-button">
-                            <div className="response-content">
-                                <div className="response-text-wrapper">4+</div>
-                            </div>
-                        </div>
+                        )}
                     </div>
+
                     <div className="progress-bar-container">
-                        <div className="progress-bar">
-                            <div className="completed-progress-bar"></div>
-                            <div className="uncompleted-progress-bar"></div>
-                            <div className="uncompleted-progress-bar"></div>
-                            <div className="uncompleted-progress-bar"></div>
-                            <div className="uncompleted-progress-bar"></div>
-                        </div>
+
+                        <ProgressBar questionCompleteness = {completedQuestions}></ProgressBar>
+
                         <div className="exit-button">
                             <Link to="/profile">
                                 <img className="x-symbol" src={require(`./${"images/Close.svg"}`).default} />
                             </Link>
                         </div>
                     </div>
+
+                    <div className="next-prev-buttons">
+                            <button className="prev-button">Previous</button>
+                            <button className="next-button" onClick = {() => handleNextClick()}>Next</button> 
+                    </div>
+                    
                 </div>
             </div>
         </div>
