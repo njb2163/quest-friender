@@ -1,0 +1,264 @@
+.profile {
+    background-color: #00544F;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.phone-screen-div {
+    background-color: #EFEBE2;
+    width: 393px;
+    height: 852px;
+    position: relative;
+}
+
+.profile .question-block {
+    position: absolute;
+    width: 344px;
+    height: 248px;
+    top: 315px;
+    left: 25px;
+    background-color: #1f24290d;
+    border-radius: 24px;
+    border: 1px solid;
+    border-color: #1f242933;
+    box-shadow: 0px 20px 25px #00000040;
+}
+
+.profile .question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 90%;
+    top: 58px;
+    left: 20px;
+    right: 20px;
+
+    font-family: var(--t2-semibold-font-family);
+    font-weight: var(--t2-semibold-font-weight);
+    color: var(--grey-1000);
+    font-size: var(--t2-semibold-font-size);
+    letter-spacing: var(--t2-semibold-letter-spacing);
+    line-height: var(--t2-semibold-line-height);
+    font-style: var(--t2-semibold-font-style);
+
+    white-space: normal;
+}
+
+.profile .next-prev-buttons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    position: absolute;
+    top: 195px;
+    left: 195px;
+    right: 20px;
+    gap: 15px;
+    
+}
+
+.prev-button {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: var(--body-medium-font-family);
+    font-weight: var(--body-medium-font-weight);
+    color: var(--grey-1000);
+    font-size: var(--body-medium-font-size);
+    letter-spacing: var(--body-medium-letter-spacing);
+    line-height: var(--body-medium-line-height);
+    white-space: nowrap;
+    font-style: var(--body-medium-font-style);
+    
+    background-color: none;
+
+}
+
+.next-button {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: -1.00px;
+    font-family: var(--body-medium-font-family);
+    font-weight: var(--body-medium-font-weight);
+    font-size: var(--body-medium-font-size);
+    letter-spacing: var(--body-medium-letter-spacing);
+    line-height: var(--body-medium-line-height);
+    white-space: nowrap;
+    font-style: var(--body-medium-font-style);
+
+    background-color:#1F2429;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    color: white;
+
+}
+
+.profile .question-response-options {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 8px;
+    position: absolute;
+    justify-content: space-evenly;
+    top: 123px;
+    left: 10px;
+    right: 10px;
+}
+
+.profile .response-button {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 4px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #2d353c1a;
+    border-radius: 12px;
+}
+
+.profile .response-content {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 4px;
+   
+    flex: 0 0 auto;
+    background-color: none;
+    border-radius: 12px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.profile .response-text-wrapper {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 9px;
+    left: 10px;
+    font-family: var(--body-semibold-font-family);
+    font-weight: var(--body-semibold-font-weight);
+    color: var(--grey-1000);
+    font-size: var(--body-semibold-font-size);
+    text-align: center;
+    letter-spacing: var(--body-semibold-letter-spacing);
+    line-height: var(--body-semibold-line-height);
+    white-space: nowrap;
+    font-style: var(--body-semibold-font-style);
+}
+
+.profile .progress-bar-container {
+    display: flex;
+    width: 340px;
+    height: 46px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 8px 12px 6px 20px;
+    position: absolute;
+    top: 11px;
+    left: 1px;
+    border-radius: 24px 24px 0px 0px;
+}
+
+.profile .progress-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+}
+
+.profile .uncompleted-progress-bar {
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+    height: 3px;
+    background-color: #1f242933;
+    border-radius: 100px;
+}
+
+.profile .completed-progress-bar {
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+    height: 3px;
+    background-color: #1f2429;
+    border-radius: 100px;
+}
+
+.profile .exit-button {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.profile .x-symbol {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 4px;
+    left: 4px;
+}
+
+:root {
+    --grey-1000: rgba(31, 36, 41, 1);
+    --whitewhite: rgba(255, 255, 255, 1);
+    --system-backgrounddark-baseprimary: rgba(0, 0, 0, 1);
+    --callout-bold-font-family: "SF Pro Text", Helvetica;
+    --callout-bold-font-weight: 400;
+    --callout-bold-font-size: 16px;
+    --callout-bold-letter-spacing: -0.3199999928474426px;
+    --callout-bold-line-height: 21px;
+    --callout-bold-font-style: normal;
+    --t2-semibold-font-family: "Inter", Helvetica;
+    --t2-semibold-font-weight: 600;
+    --t2-semibold-font-size: 16px;
+    --t2-semibold-letter-spacing: 0px;
+    --t2-semibold-line-height: 20px;
+    --t2-semibold-font-style: normal;
+    --body-medium-font-family: "Inter", Helvetica;
+    --body-medium-font-weight: 500;
+    --body-medium-font-size: 15px;
+    --body-medium-letter-spacing: 0px;
+    --body-medium-line-height: 20px;
+    --body-medium-font-style: normal;
+    --body-semibold-font-family: "Inter", Helvetica;
+    --body-semibold-font-weight: 600;
+    --body-semibold-font-size: 14px;
+    --body-semibold-letter-spacing: 0px;
+    --body-semibold-line-height: 20px;
+    --body-semibold-font-style: normal;
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+html,
+body {
+    margin: 0px;
+    height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+    outline: 2px solid #4a90e2 !important;
+    outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+    text-decoration: none;
+}
+
