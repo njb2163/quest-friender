@@ -1,14 +1,13 @@
 import './App';
 import './ProfileSection.css';
-import React, { useState, useEffect } from 'react';
 
-function QuestionOption({option}) { // multiple_choice: true/false, list of options. return: lisdt of options or text form
+function QuestionOption({option, isSelected, onClick}) { 
 
     return (
         <div className="response-button">
-            <div className="response-content">
+            <button className={`response-content ${isSelected ? 'selected' : ''}`} onClick = {() => onClick(option)}>
                 <div className="response-text-wrapper">{option}</div>
-            </div>
+            </button>
         </div>
     )
 }
