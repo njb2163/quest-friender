@@ -9,6 +9,7 @@ import Messages from './Messages';
 import QuestDetails from './QuestDetails';
 import Settings from './Settings';
 import Quests from './Quests';
+import ProfileSection from './ProfileSection';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,8 +17,6 @@ function App() {
   const [loadingUser, setLoadingUser] = useState(true);
   const [loadingMessages, setLoadingMessages] = useState(true);
   const [error, setError] = useState(null);
-
-
 
   useEffect(() => {
     fetch('/api/profile')
@@ -68,6 +67,7 @@ function App() {
           <main className="main-content">
             <Routes>
               <Route path="/profile" element={<Personality user={user} />} />
+              <Route path="/profile/:profileSectionName" element={<ProfileSection />} />
               <Route path="/settings" element={<Settings user={user} />} />
               <Route path="/messages" element={<Messages messages={messages}/>} />
               <Route path="/quests" element={<Quests />} />
