@@ -1,0 +1,101 @@
+/* Container */
+.quests-container {
+    width: 393px;
+    height: 852px;
+    position: relative;
+    background: #EFEBE2;
+}
+
+/* Ellipses */
+.ellipse {
+    width: 62px;
+    height: 62px;
+    position: absolute;
+    background: #D9D9D9;
+    border-radius: 9999px;
+}
+
+.ellipse-pending { left: 51px; top: 193px; }
+.ellipse-active { left: 51px; top: 375px; }
+.ellipse-upcoming-1 { left: 51px; top: 513px; }
+.ellipse-upcoming-2 { left: 51px; top: 652px; }
+
+/* Line Separator */
+.line-separator {
+    width: 364px;
+    height: 0;
+    left: 15px;
+    top: 330px;
+    position: absolute;
+    border: 1px solid #C2C0C0;
+}
+
+/* Labels */
+.label {
+    position: absolute;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    color: black;
+}
+
+.label-pending { left: 20px; top: 135px; }
+.label-active { left: 20px; top: 308px; }
+
+/* Quest Cards */
+.quest-card {
+    width: 354px;
+    height: 122px;
+    position: absolute;
+    background: rgba(31, 36, 41, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(31, 36, 41, 0.20);
+}
+
+.card-pending { left: 20px; top: 163px; }
+.card-active { left: 20px; top: 345px; }
+.card-upcoming-1 { left: 20px; top: 483px; }
+.card-upcoming-2 { left: 20px; top: 622px; }
+
+/* Quest Info */
+.quest-info {
+    width: 129px;
+    height: 58px;
+    position: absolute;
+    top: 35px;
+    left: 137px;
+    text-align: center;
+}
+
+.quest-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: black;
+}
+
+.quest-time {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    color: black;
+    margin-top: 6px;
+}
+
+.quest-participants {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.25);
+    margin-top: 4px;
+}
+
+/* Images */
+.image-pending { width: 63px; height: 63px; left: 51px; top: 193px; position: absolute; border-radius: 9999px; }
+.image-active { width: 63px; height: 63px; left: 51px; top: 374px; position: absolute; border-radius: 9999px; }
+.image-upcoming-1 { width: 63px; height: 63px; left: 51px; top: 513px; position: absolute; border-radius: 9999px; }
+.image-upcoming-2 { width: 63px; height: 63px; left: 51px; top: 652px; position: absolute; border-radius: 9999px; }

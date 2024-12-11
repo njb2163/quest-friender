@@ -17,6 +17,10 @@ a {
   text-decoration: none;
 }
 
+header {
+  position: relative; /* or fixed, if needed */
+  z-index: 10;
+}
 
 
 :root {
