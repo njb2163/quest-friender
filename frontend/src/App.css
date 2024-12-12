@@ -322,13 +322,16 @@ header {
   white-space: nowrap;
 }
 
-.iphone-pro .group-2 {
+.group-2 {
   position: absolute;
   width: 393px;
   height: 60px;
-  top: 792px;
+  bottom: 0;
   left: 0;
   background-color: #00544f;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .iphone-pro .footer-profile {
@@ -731,5 +734,82 @@ header {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 65px; /* Adjust to align with the header title */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 10;
+  /* Remove any default button spacing */
+  margin: 0;
+  line-height: 0;
+}
+
+.back-arrow {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* Makes the arrow white */
+  /* Remove any default image spacing */
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.profile {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "Besley-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #fefae0;
+  font-size: 15px;
+  letter-spacing: -0.41px;
+  line-height: 22px;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.footer-icons {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1); /* Makes icons white */
+  transition: opacity 0.2s ease;
+  opacity: 0.7; /* Slightly dimmed by default */
+}
+
+.footer-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  position: relative;
+  gap: 4px;
+}
+
+.footer-link:hover .footer-icons {
+  opacity: 1;
+}
+
+.footer-link.active .footer-icons {
+  opacity: 1;
+}
+
+.active-indicator {
+  width: 4px;
+  height: 4px;
+  background-color: #FEFAE0;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 1px;
 }
 

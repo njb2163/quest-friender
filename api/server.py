@@ -5,13 +5,52 @@ app = Flask(__name__)
 
 @app.route("/api/quests")
 def get_quests():
-    return [
-        {
-            "quest_name": "Stoic Scholar",
-            "quest_description": "Find the statue of the lion and take a picture in front of it.",
-            "quest_image": "",
-        }
-    ]
+    return {
+        "active_quests": [
+            {
+                "title": "Jungle Bonanza",
+                "time": "Tomorrow at 6:00 PM",
+                "participants": "4",
+                "description": "Quest description",
+                "hint": "HINT",
+                "image": "./images/quests.png",
+            },
+            {
+                "title": "Happy Time",
+                "time": "Today at 4:00 PM",
+                "participants": "2",
+                "description": "Quest description",
+                "hint": "HINT",
+                "image": "./images/quests.png",
+            },
+            {
+                "title": "Cool Fun",
+                "time": "Thursday at 2:00 PM",
+                "participants": "3",
+                "description": "Quest description",
+                "hint": "HINT",
+                "image": "./images/quests.png",
+            },
+        ],
+        "pending_quests": [
+            {
+                "title": "Happy Time",
+                "time": "Today at 4:00 PM",
+                "participants": "2",
+                "description": "Quest description",
+                "hint": "HINT",
+                "image": "./images/quests.png",
+            },
+            {
+                "title": "Cool Fun",
+                "time": "Thursday at 2:00 PM",
+                "participants": "3",
+                "description": "Quest description",
+                "hint": "HINT",
+                "image": "./images/quests.png",
+            },
+        ],
+    }
 
 
 @app.route("/api/messages")

@@ -1,22 +1,25 @@
 import './App.css';
 import { useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 
 function QuestDetails() {
     const [showHint, setShowHint] = useState(false);
+    const { title } = useParams();
+    const location = useLocation();
+    const { description, hint, image } = location.state || {};
 
     return (
         <div className="quest-details-overlap">
             <div className="quest-details-container">
                 <img
                     className="quest-details-icon"
-                    src={require("./images/quest1.png")}
+                    src={require(`${image}`)}
                     alt="Quest compass"
                 />
                 <div className="quest-details-card">
-                    <h2 className="quest-details-title">Title Quest</h2>
+                    <h2 className="quest-details-title">{title}</h2>
                     <p className="quest-details-description">
-                        The following questions will pertain to your background. 
-                        This will help us understand who you are and where you came from.
+                        {description}
                     </p>
                     <div className="quest-details-button-group">
                         <button className="quest-details-icon-button">
@@ -36,7 +39,7 @@ function QuestDetails() {
                         <div className="quest-details-hint-card" onClick={(e) => e.stopPropagation()}>
                             <h3 className="quest-details-hint-title">Hint!</h3>
                             <p className="quest-details-hint-text">
-                                This is a hint, it will help you complete the quest!
+                                {hint}
                             </p>
                         </div>
                     </div>
