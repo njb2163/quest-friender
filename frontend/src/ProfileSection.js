@@ -6,83 +6,10 @@ import React, { useState } from 'react';
 import QuestionOption from './QuestionOption';
 import ProgressBar from './ProgressBar'
 
-const data = [
-    {
-        "category": "background",
-        "questions": [
-            {
-                "id": 1,
-                "question_content": "How many siblings did you have growing up?",
-                "multiple_choice": true,
-                "options": ["0", "1", "2", "3", "4+"]
-            },
-            {
-                "id": 2,
-                "question_content": "What country do you call home?",
-                "multiple_choice": false,
-                "options": []
-            },
-            {
-                "id": 3,
-                "question_content": "What was your first language?",
-                "multiple_choice": false,
-                "options": []
-            },
-            {
-                "id": 4,
-                "question_content": "What other languages do you speak?",
-                "multiple_choice": false,
-                "options": []
-            },
-            {
-                "id": 5,
-                "question_content": "How many siblings do you have?",
-                "multiple_choice": false,
-                "options": []
-            }
-        ]
-    },
-    {
-        "category": "interests",
-        "questions": [
-            {
-                "id": 1,
-                "question_content": "How many siblings do you have?",
-                "multiple_choice": true,
-                "options": ["1", "2", "3", "4", "5"]
-            },
-            {
-                "id": 2,
-                "question_content": "What country do you call home?",
-                "multiple_choice": false,
-                "options": []
-            },
-            {
-                "id": 3,
-                "question_content": "What was your first language?",
-                "multiple_choice": false,
-                "options": []
-            },
-            {
-                "id": 4,
-                "question_content": "What other languages do you speak?",
-                "multiple_choice": false,
-                "options": []
-            },
-            {
-                "id": 5,
-                "question_content": "How many siblings do you have?",
-                "multiple_choice": false,
-                "options": []
-            }
-        ]
-    }
-];
-
-function ProfileSection() {
+function ProfileSection({questionData}) {
     const { profileSectionName } = useParams();
-    
-    const sectionData = data.find(item => item.category === profileSectionName);
+
+    const sectionData = questionData.find(item => item.category === profileSectionName);
 
     let [index, setIndex] = useState(0);
     let [question, setQuestion] = useState(sectionData.questions[index].question_content);
@@ -105,8 +32,8 @@ function ProfileSection() {
     }
 
     function handlePrevClick() {
-        if (index == 0) {
-            navigate('/profile'); 
+        if (index === 0) {
+            navigate(`/profile/${profileSectionName}`); 
         }
         else {
             setIndex(prevIndex => prevIndex - 1); 
@@ -132,7 +59,7 @@ function ProfileSection() {
                     <div className="question-response-options">
                         { sectionData.questions[index].multiple_choice === true ? (
                             sectionData.questions[index].options.map((option, index) => (
-                                <QuestionOption key = {index} option = {option} isSelected = {option == selectedOption} onClick = {handleOptionClick}/>
+                                <QuestionOption key = {index} option = {option} isSelected = {option === selectedOption} onClick = {handleOptionClick}/>
                             ))
                         ) : (
                             <div class="open-question">
