@@ -8,6 +8,7 @@
 
 .phone-screen-div {
     background-color: #EFEBE2;
+    
     width: 393px;
     height: 852px;
     position: relative;
@@ -16,7 +17,7 @@
 .profile .question-block {
     position: absolute;
     width: 344px;
-    height: 248px;
+    height: 30%;
     top: 315px;
     left: 25px;
     background-color: #1f24290d;
@@ -32,7 +33,7 @@
     align-items: center;
     position: absolute;
     width: 90%;
-    top: 58px;
+    top: 62px;
     left: 20px;
     right: 20px;
 
@@ -50,14 +51,12 @@
 .profile .next-prev-buttons {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: right;
     position: absolute;
-    top: 195px;
-    left: 195px;
-    right: 20px;
+    bottom: 15px;
     gap: 15px;
-    
+    right: 20px;
+    width: 100%;
 }
 
 .prev-button {
@@ -68,7 +67,7 @@
     margin-top: -1.00px;
     font-family: var(--body-medium-font-family);
     font-weight: var(--body-medium-font-weight);
-    color: var(--grey-1000);
+    color: #1F2429;
     font-size: var(--body-medium-font-size);
     letter-spacing: var(--body-medium-letter-spacing);
     line-height: var(--body-medium-line-height);
@@ -76,7 +75,6 @@
     font-style: var(--body-medium-font-style);
     
     background-color: none;
-
 }
 
 .next-button {
@@ -95,22 +93,10 @@
     background-color:#1F2429;
     border-radius: 20px;
     padding: 10px;
-    width: 100px;
+    width: 17%;
     display: flex;
     justify-content: center;
     color: white;
-
-}
-
-.profile .question-response-options {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 8px;
-    position: absolute;
-    justify-content: space-evenly;
-    top: 123px;
-    left: 10px;
-    right: 10px;
 }
 
 .profile .response-button {
@@ -223,27 +209,34 @@
     left: 4px;
 }
 
+.profile .question-response-options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    justify-content: space-evenly;
+    top: 123px;
+    left: 10px;
+    right: 10px;
+}
+
 .open-question {
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    align-items: flex-start;
-    gap: 4px;
-    position: relative;
+    width: 90%;
+    left: 10px;
+    right: 10px;
 }
 
 .open-question .open-question-box {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px;
-    position: relative;
-    align-self: stretch;
-    width: 100%;
     flex: 0 0 auto;
-    background-color: #1f24290d;
-
+    background-color: none;
     border:none;
+    width: 100%;
+    left: 10px;
+    right: 10px;
 }
 
 .open-question .open-question-wrapper {
@@ -252,12 +245,17 @@
     margin-top: -1.00px;
     font-family: var(--body-medium-font-family);
     font-weight: var(--body-medium-font-weight);
-    color: #1f242999;
     font-size: var(--body-medium-font-size);
     letter-spacing: var(--body-medium-letter-spacing);
     line-height: var(--body-medium-line-height);
     font-style: var(--body-medium-font-style);
 
+    border: 1px solid #c2b7a8;
+    border-radius: 7px;
+    background-color: #d7d5cc;
+    height: 35px;
+
+    
 }
 
 :root {
@@ -300,7 +298,7 @@ body {
     margin: 0px;
     height: 100%;
 }
-/* a blue color as a generic focus style */
+
 button:focus-visible {
     outline: 2px solid #4a90e2 !important;
     outline: -webkit-focus-ring-color auto 5px !important;
@@ -309,3 +307,130 @@ a {
     text-decoration: none;
 }
 
+.intro-card-block {
+    position: absolute;
+    width: 344px;
+    height: 446px;
+    top: 203px;
+    left: 25px;
+}
+
+.bottom-group {
+    position: absolute;
+    width: 344px;
+    height: 248px;
+    top: 198px;
+    left: 0;
+}
+
+.block-footer {
+    display: flex;
+    width: 340px;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    position: absolute;
+    top: 168px;
+    left: 250px;
+    z-index: 1;
+    background-color: transparent;
+}
+
+.intro-next-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding:10px;
+    width: 52px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: var(--grey-1000);
+    border-radius: 20px;
+    color: white;
+    border: none;
+    font-weight: var(--body-medium-font-weight);
+}
+
+.intro-card-content-block {
+    display: flex;
+    flex-direction: column;
+    width: 344px;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0px 20px 20px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+
+    white-space: normal;
+}
+
+.intro-card-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.intro-card-title-wrapper {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1.00px;
+    font-family: var(--t2-semibold-font-family);
+    font-weight: var(--t2-semibold-font-weight);
+    color: var(--grey-1000);
+    font-size: var(--t2-semibold-font-size);
+    letter-spacing: var(--t2-semibold-letter-spacing);
+    line-height: var(--t2-semibold-line-height);
+    font-style: var(--t2-semibold-font-style);
+}
+
+.intro-card-blurb {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.intro-card-blurb-wrapper {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1.00px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #1f2429cc;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+
+.intro-card-background {
+    position: absolute;
+    width: 344px;
+    height: 248px;
+    top: 0;
+    left: 0;
+    background-color: #1f24290d;
+    border-radius: 24px;
+    border: 1px solid;
+    border-color: #1f242933;
+    box-shadow: 0px 20px 25px #00000040;
+}
+
+.intro-card-image {
+    position: absolute;
+    width: 344px;
+    height: 238px;
+    top: 0;
+    left: 0;
+    border-radius: 15px 15px 0px 0px;
+}

@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 
 function Header() {
     const location = useLocation();
-
-    const getHeaderText = () => {
+ 
+    const getHeaderText = () => {  
         switch(location.pathname) {
             case '/profile':
                 return 'PROFILE';
@@ -14,6 +14,30 @@ function Header() {
                 return 'SETTINGS';
             case '/quests':
                 return 'QUESTS';
+            case '/profile/background':
+                return 'BACKGROUND';
+            case '/profile/interests':
+                return 'INTERESTS';
+            case '/profile/preferences':
+                return 'PREFERENCES';
+             case '/profile/values':
+                return 'VALUES';
+            case '/profile/traits':
+                return 'TRAITS';
+            case '/profile/perspectives':
+                return 'PERSPECTIVES';
+            case '/profile/background/quiz':
+                return 'BACKGROUND';
+            case '/profile/interests/quiz':
+                return 'INTERESTS';
+            case '/profile/preferences/quiz':
+                return 'PREFERENCES';
+                case '/profile/values/quiz':
+                return 'VALUES';
+            case '/profile/traits/quiz':
+                return 'TRAITS';
+            case '/profile/perspectives/quiz':
+                return 'PERSPECTIVES';
             default:
                 return '';
         }
