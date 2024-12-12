@@ -14,6 +14,7 @@ import ProfileSection from './ProfileSection';
 function App() {
   const [user, setUser] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [quests, setQuests] = useState({});
   const [loadingUser, setLoadingUser] = useState(true);
   const [loadingMessages, setLoadingMessages] = useState(true);
   const [error, setError] = useState(null);
@@ -56,8 +57,27 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    fetch('/api/quests')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch quests');
+        }
+        return res.json();
+      })
+      .then(data => {
+        setQuests(data);
+      })
+      .catch(error => {
+        console.error('Error fetching quests:', error);
+        setError(error.message);
+        setLoadingMessages(false);
+      });
+  }, []);
+
   if (loadingUser || loadingMessages) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
+
 
   return (
     <Router>
@@ -70,8 +90,8 @@ function App() {
               <Route path="/profile/:profileSectionName" element={<ProfileSection />} />
               <Route path="/settings" element={<Settings user={user} />} />
               <Route path="/messages" element={<Messages messages={messages}/>} />
-              <Route path="/quests" element={<Quests />} />
-              <Route path="/questDetails" element={<QuestDetails />} />
+              <Route path="/quests" element={<Quests quests={quests} />} />
+              <Route path="/questDetails/:title" element={<QuestDetails />} />
             </Routes>
           </main>
           <Footer />

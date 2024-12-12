@@ -1,50 +1,69 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Quests.css';
 
-function Quests() {
+function Quests({ quests }) {
+
+    const active_quests = quests["active_quests"]
+    const pending_quests = quests["pending_quests"]
+    
+
+    const renderQuestCard = (quest, type) => {
+        return (
+            <Link 
+                to={`/questDetails/${quest.title}`}
+                state={{ title: quest.title, description: quest.description, hint: quest.hint, image: quest.image }}
+                className={`quest-card card-${type}`}
+            >
+                <img 
+                    className="quest-avatar" 
+                    src={require(`${quest.image}`)} 
+                    alt={`${type} Avatar`} 
+                />
+                <div className="quest-info">
+                    <div className="quest-title">{quest.title}!</div>
+                    <div className="quest-time">{quest.time}</div>
+                    <div className="quest-participants">
+                        with Bob and {parseInt(quest.participants) - 1} others
+                    </div>
+                </div>
+            </Link>
+        );
+    };
+
     return (
         <div className="quests-container">
-
-            <div className="line-separator"></div>
-            <div className="label label-pending">Pending...</div>
-            <div className="label label-active">Active</div>
-
-            <div className="quest-card card-pending">
-                <div className="quest-info">
-                    <div className="quest-title">Jungle Bonanza!</div>
-                    <div className="quest-time">Tomorrow at 6:00 PM</div>
-                    <div className="quest-participants">with Bob and 2 others</div>
+            {pending_quests.length > 0 && (
+                <div className="quest-section">
+                    <div className="section-header">
+                        <div className="label">Pending...</div>
+                        <div className="section-line"></div>
+                    </div>
+                    <div className="quests-list">
+                        {pending_quests.map((quest, index) => (
+                            <div key={`pending-${index}`}>
+                                {renderQuestCard(quest, 'pending')}
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
 
-            <div className="quest-card card-active">
-                <div className="quest-info">
-                    <div className="quest-title">Jungle Bonanza!</div>
-                    <div className="quest-time">Tomorrow at 6:00 PM</div>
-                    <div className="quest-participants">with Bob and 2 others</div>
+            {active_quests.length > 0 && (
+                <div className="quest-section">
+                    <div className="section-header">
+                        <div className="label">Active...</div>
+                        <div className="section-line"></div>
+                    </div>
+                    <div className="quests-list">
+                        {active_quests.map((quest, index) => (
+                            <div key={`active-${index}`}>
+                                {renderQuestCard(quest, 'active')}
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-
-            <div className="quest-card card-upcoming-1">
-                <div className="quest-info">
-                    <div className="quest-title">Jungle Bonanza!</div>
-                    <div className="quest-time">Tomorrow at 6:00 PM</div>
-                    <div className="quest-participants">with Bob and 2 others</div>
-                </div>
-            </div>
-
-            <div className="quest-card card-upcoming-2">
-                <div className="quest-info">
-                    <div className="quest-title">Jungle Bonanza!</div>
-                    <div className="quest-time">Tomorrow at 6:00 PM</div>
-                    <div className="quest-participants">with Bob and 2 others</div>
-                </div>
-            </div>
-
-            <img className="image-pending" src={require("./images/quests.png")} alt="Pending Avatar" />
-            <img className="image-active" src={require("./images/quests.png")} alt="Active Avatar" />
-            <img className="image-upcoming-1" src={require("./images/quests.png")} alt="Upcoming Avatar 1" />
-            <img className="image-upcoming-2" src={require("./images/quests.png")} alt="Upcoming Avatar 2" />
+            )}
         </div>
     );
 }

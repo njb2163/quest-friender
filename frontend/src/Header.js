@@ -1,8 +1,10 @@
 import './App.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Header() {
     const location = useLocation();
+    const navigate = useNavigate();
+    const showBackButton = location.pathname.includes('/questDetails');
 
     const getHeaderText = () => {
         switch(location.pathname) {
@@ -15,13 +17,29 @@ function Header() {
             case '/quests':
                 return 'QUESTS';
             default:
+                if (location.pathname.includes('/questDetails')) {
+                    return 'QUEST DETAILS';
+                }
                 return '';
         }
     };
 
     return (
         <header>
-            <div className="rectangle"></div>
+            <div className="rectangle">
+                {showBackButton && (
+                    <button 
+                        className="back-button"
+                        onClick={() => navigate('/quests')}
+                    >
+                        <img 
+                            src={require("./images/back-arrow.png")} 
+                            alt="Back" 
+                            className="back-arrow"
+                        />
+                    </button>
+                )}
+            </div>
             <div className="status-bar">
                 <div className="left-side">
                     <div className="statusbar-time"><div className="time">9:41</div></div>
