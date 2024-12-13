@@ -1,7 +1,22 @@
 from flask import Flask
+from flask import render_template
+from flask import Response, request, jsonify
 
 app = Flask(__name__)
 
+question_response_data = [
+    {
+        "category": "background",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "interests",
+        "saved_answers": [None, None, None, None, None]
+    }
+]
+
+current_question = None
+current_question_index = None
 
 @app.route("/api/quests")
 def get_quests():
@@ -167,6 +182,53 @@ def get_profile_section_questions():
             ]
         }
     ]
+
+@app.route('/api/get_question_responses', methods = ['GET'])
+def get_question_response_data():
+    if(request.method == 'GET'):
+        category = request.args.get('category')
+        
+        for item in question_response_data:
+            if item['category'] == category:
+                category_data = item
+                break
+        
+        return jsonify(data = category_data)
+
+@app.route('/api/save_question_responses', methods = ['GET', 'POST'])
+def save_question_responses():
+    global question_response_data
+
+    json_data = request.get_json()
+    category = json_data["category"]
+    question_index = json_data["question_index"]
+    question_response = json_data["question_response"]
+
+    for entry in question_response_data:
+        if entry["category"] == category:
+            entry["saved_answers"][question_index] = question_response
+            break
+
+    return jsonify(data = question_response_data)
+
+@app.route('/api/get_question_index', methods = ['GET'])
+def get_question_and_index():
+    if(request.method == 'GET'):
+        global current_question
+        global current_question_index
+        
+        return jsonify(cur_question = current_question, cur_index = current_question_index)
+
+@app.route('/api/save_question_index', methods = ['GET', 'POST'])
+def save_question_and_index():
+    global current_question
+    global current_question_index
+
+    json_data = request.get_json()
+    current_question = json_data["question"]
+    current_question_index = json_data["question_index"]
+
+    return jsonify(cur_question = current_question, cur_index = current_question_index)
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=True)
