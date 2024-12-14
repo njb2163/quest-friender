@@ -1,0 +1,39 @@
+.welcome {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: '#EFEBE2'
+}
+
+.start-container {
+    background: '#00544f';
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: 'absolute';
+    backdrop-filter: blur(10px);
+}
+
+.welcome-text {
+    left: 71;
+    top: 545;
+    position: 'absolute';
+    color: #EFEBE2;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.408px;
+    text-transform: uppercase;
+}
+
+.quest-logo {
+    left: 117;
+    top: 350;
+    position: 'absolute';
+    width: 183px;
+    height: 153px;
+    flex-shrink: 0;
+}

@@ -11,6 +11,7 @@ import Settings from './Settings';
 import Quests from './Quests';
 import ProfileSection from './ProfileSection';
 import ProfileSectionIntro from './ProfileSectionIntro';
+import Start from './Start'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -106,8 +107,8 @@ function App() {
       <div className="iphone-pro">
         <div className="div">
           <Header />
-          <main className="main-content">
             <Routes>
+              <Route path="/" element={<Start/>} />
               <Route path="/profile" element={<Personality user={user} />} />
               <Route path="/profile/:profileSectionName" element={<ProfileSectionIntro questionData={questions}/>} />
               <Route path='/profile/:profileSectionName/quiz' element = {<ProfileSection questionData={questions}/>} /> 
@@ -116,7 +117,6 @@ function App() {
               <Route path="/quests" element={<Quests quests={quests} />} />
               <Route path="/questDetails/:title" element={<QuestDetails />} />
             </Routes>
-          </main>
           <Footer />
         </div>
       </div>

@@ -51,7 +51,7 @@ header {
 
 
 .iphone-pro {
-  background-color: #efebe2;
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -389,7 +389,7 @@ header {
   height: 25px;
   top: 1px;
   left: 1px;
-  background-color: #fefae0;
+  background-color: #716722;
   border-radius: 7px;
 }
 
