@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import './QuestDetails'
@@ -11,8 +11,11 @@ import Settings from './Settings';
 import Quests from './Quests';
 import ProfileSection from './ProfileSection';
 import ProfileSectionIntro from './ProfileSectionIntro';
+import Start from './Start'
+import SignUp from './SignUp';
 
-function App() {
+const AppContent = () => {
+  const location = useLocation();
   const [user, setUser] = useState(null);
   const [messages, setMessages] = useState([]);
   const [quests, setQuests] = useState({});
@@ -100,26 +103,33 @@ function App() {
   if (loadingUser || loadingMessages || loadingQuestions) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  const showFooter = (location.pathname !== '/' && location.pathname !== '/signup');
 
   return (
-    <Router>
-      <div className="iphone-pro">
-        <div className="div">
-          <Header />
-          <main className="main-content">
-            <Routes>
-              <Route path="/profile" element={<Personality user={user} />} />
-              <Route path="/profile/:profileSectionName" element={<ProfileSectionIntro questionData={questions}/>} />
-              <Route path='/profile/:profileSectionName/quiz' element = {<ProfileSection questionData={questions}/>} /> 
-              <Route path="/settings" element={<Settings user={user} />} />
-              <Route path="/messages" element={<Messages messages={messages}/>} />
-              <Route path="/quests" element={<Quests quests={quests} />} />
-              <Route path="/questDetails/:title" element={<QuestDetails />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+    <div className="iphone-pro">
+      <div className="div">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Start/>} />
+          <Route path="/signup" element={<SignUp setUser={setUser}/>} />
+          <Route path="/profile" element={<Personality user={user} />} />
+          <Route path="/profile/:profileSectionName" element={<ProfileSectionIntro questionData={questions}/>} />
+          <Route path='/profile/:profileSectionName/quiz' element={<ProfileSection questionData={questions}/>} /> 
+          <Route path="/settings" element={<Settings user={user} />} />
+          <Route path="/messages" element={<Messages messages={messages}/>} />
+          <Route path="/quests" element={<Quests quests={quests} />} />
+          <Route path="/questDetails/:title" element={<QuestDetails />} />
+        </Routes>
+        {showFooter && <Footer />}
       </div>
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

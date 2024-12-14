@@ -1,0 +1,209 @@
+.signup-container {
+    width: 393px;
+    height: 852px;
+    position: relative;
+    background: #EFEBE2;
+}
+
+.status-bar {
+    width: 100%;
+    height: 59px;
+    position: absolute;
+    left: 0;
+    top: 3px;
+    background: #00544F;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 11px 3px 10px;
+}
+
+.status-bar-time {
+    color: #FEFAE0;
+    font-size: 16px;
+    font-family: 'SF Pro Text', sans-serif;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+}
+
+.status-bar-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.avatar-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 180px;
+    width: 133px;
+    height: 133px;
+}
+
+.avatar-circle {
+    width: 133px;
+    height: 133px;
+    background: rgba(31, 36, 41, 0.05);
+    border-radius: 9999px;
+    border: 1px solid rgba(31, 36, 41, 0.20);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.plus-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    background: #00544F;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.plus-button::before,
+.plus-button::after {
+    content: '';
+    position: absolute;
+    background: #EFEBE2;
+    width: 15px;
+    height: 2px;
+}
+
+.plus-button::after {
+    transform: rotate(90deg);
+}
+
+.avatar-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.avatar-grid {
+    background: #EFEBE2;
+    padding: 20px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 350px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.avatar-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.avatar-option {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.avatar-option:hover {
+    border-color: #00544F;
+}
+
+.signup-title {
+    position: absolute;
+    left: 117px;
+    top: 128px;
+    text-align: center;
+    color: black;
+    font-size: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 22px;
+}
+
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0 21px;
+    position: absolute;
+    top: 340px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 393px;
+}
+
+.input-field {
+    padding: 8px;
+    background: rgba(31, 36, 41, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(31, 36, 41, 0.20);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgba(31, 36, 41, 0.60);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.finish-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 695px;
+    width: 245px;
+    height: 45px;
+    background: transparent;
+    border: 2px solid #48817B;
+    border-radius: 19px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    color: #00544F;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.finish-button:hover {
+    background: rgba(0, 84, 79, 0.1);
+}
+
+.error-message {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 660px;
+    width: 245px;
+    color: #ff4444;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+}
