@@ -15,9 +15,6 @@ question_response_data = [
     }
 ]
 
-current_question = None
-current_question_index = None
-
 @app.route("/api/quests")
 def get_quests():
     return {
@@ -210,25 +207,6 @@ def save_question_responses():
             break
 
     return jsonify(data = question_response_data)
-
-@app.route('/api/get_question_index', methods = ['GET'])
-def get_question_and_index():
-    if(request.method == 'GET'):
-        global current_question
-        global current_question_index
-        
-        return jsonify(cur_question = current_question, cur_index = current_question_index)
-
-@app.route('/api/save_question_index', methods = ['GET', 'POST'])
-def save_question_and_index():
-    global current_question
-    global current_question_index
-
-    json_data = request.get_json()
-    current_question = json_data["question"]
-    current_question_index = json_data["question_index"]
-
-    return jsonify(cur_question = current_question, cur_index = current_question_index)
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=True)

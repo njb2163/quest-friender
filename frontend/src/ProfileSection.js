@@ -9,16 +9,15 @@ import ProgressBar from './ProgressBar';
 
 function ProfileSection({questionData}) {
     const { profileSectionName } = useParams();
-
     const sectionData = questionData.find(item => item.category === profileSectionName);
 
-    let [index, setIndex] = useState(0);
-    let [question, setQuestion] = useState(sectionData.questions[index].question_content);
-    let [completedQuestions, setCompletedQuestions] = useState([true, false, false, false, false])
-    let [selectedOption, setSelectedOption] = useState(null);
-    let [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
-    let [currentText, setCurrentText] = useState('');
-    let [currentAnswers, setCurrentAnswers] = useState([null, null, null, null, null]);
+    const [index, setIndex] = useState(0);
+    const [question, setQuestion] = useState(sectionData.questions[index].question_content);
+    const [completedQuestions, setCompletedQuestions] = useState([true, false, false, false, false])
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
+    const [currentText, setCurrentText] = useState('');
+    const [currentAnswers, setCurrentAnswers] = useState([null, null, null, null, null]);
     
     const navigate = useNavigate();
     
@@ -37,7 +36,7 @@ function ProfileSection({questionData}) {
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(dataToSave),
             success: function(result) {
-                let AllData = result["data"];
+                console.log("Saved Question Response");
             },
             error: function(request, status, error) {
                 console.log("Error saving question response");
@@ -72,56 +71,13 @@ function ProfileSection({questionData}) {
         });
     }
 
-    function saveQuestionAndIndex() {
-        let dataToSave = {
-            "question": question,
-            "question_index": index
-        }
-
-        $.ajax({
-            type: "POST",
-            url: "/api/save_question_index",
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(dataToSave),
-            success: function(result) {
-                console.log("question and index saved")
-                let AllData = result["data"];
-            },
-            error: function(request, status, error) {
-                console.log("Error saving question response");
-                console.log(request);
-                console.log(status);
-                console.log(error);
-            }
-        });
-    }
-    
-    function loadQuestionAndIndex() {
-        $.ajax({
-            type: "GET",
-            url: "/api/get_question_index",
-            contentType: "application/json; charset=utf-8",
-            success: function(result) {
-                console.log("question and index loaded")
-                let loaded_question = result["cur_question"];
-                let loaded_index = result["cur_index"];
-            
-                setQuestion(loaded_question);
-                setIndex(loaded_index);
-            },
-            error: function(request, status, error) {
-                console.log("Error saving question response");
-                console.log(request);
-                console.log(status);
-                console.log(error);
-            }
-        });
-    }
+    useEffect(() => {
+        loadQuestionResponse();
+    }, []); 
 
     useEffect(() => {
-        console.log("mounting or profileSectionName changed");
         loadQuestionResponse();
-    }, [profileSectionName]); // only runs on mount or when profileSectionName changes
+    }, [index]); 
 
     useEffect(() => {
         let answer = currentAnswers[index];
@@ -139,11 +95,11 @@ function ProfileSection({questionData}) {
         }
     }, [index, currentAnswers]); 
 
-    useEffect(() => { 
-        console.log("question changed");
-        saveQuestionAndIndex(); 
-        loadQuestionAndIndex();
-    }, [question])
+    useEffect(() => {
+        if (selectedOption !== null && selectedOptionIndex !== null && currentText !== null) {
+          saveQuestionResponse();
+        }
+      }, [selectedOption, currentText]); 
 
     function handleNextClick() {
         if (index >= 4) {
@@ -177,21 +133,12 @@ function ProfileSection({questionData}) {
         setSelectedOption(option);
         setSelectedOptionIndex(option_index);
     }
-
-    useEffect(() => {
-        if (selectedOption !== null && selectedOptionIndex !== null && currentText !== null) {
-          saveQuestionResponse();
-          loadQuestionResponse();
-        }
-      }, [selectedOption, selectedOptionIndex, currentText]); 
       
     return (
         <div className="profile">
             <div className="phone-screen-div">
                 <div className="question-block">
-
                 <div className="question">{question}</div> 
-        
                     <div className="question-response-options">
                         { sectionData.questions[index].multiple_choice === true ? (
                             sectionData.questions[index].options.map((option, index) => (
@@ -205,23 +152,18 @@ function ProfileSection({questionData}) {
                             </div>
                         )}
                     </div>
-
                     <div className="progress-bar-container">
-
                         <ProgressBar questionCompleteness = {completedQuestions}></ProgressBar>
-
                         <div className="exit-button">
                             <Link to="/profile">
                                 <img className="x-symbol" src={require(`./${"images/Close.svg"}`).default} />
                             </Link>
                         </div>
                     </div>
-
                     <div className="next-prev-buttons">
                             <button className="prev-button" onClick = {() => handlePrevClick()}>Previous</button>
                             <button className="next-button" onClick = {() => handleNextClick()}>Next</button> 
                     </div>
-                
                 </div>
             </div>
         </div>
