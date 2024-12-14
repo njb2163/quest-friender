@@ -1,6 +1,52 @@
-from flask import Flask
+from flask import Flask, request, jsonify
+import json
+import logging
 
 app = Flask(__name__)
+
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+
+log = logging.getLogger(__name__)
+
+profile_data = {
+    "date_of_birth": "07/27/1999",
+    "first_name": "Victoria",
+    "last_name": "Smith",
+    "email": "vsmith@gmail.com",
+    "profile_image": "./images/Victoria-background.png",
+    "type": "Adventurer",
+    "profileComplete": 60,
+    "sections": {
+        "background": 90,
+        "interests": 40,
+        "preferences": 30,
+        "values": 60,
+        "traits": 50,
+        "perspectives": 0,
+    },
+}
+
+
+@app.route("/api/profile", methods=["GET", "POST"])
+def update_profile():
+    global profile_data
+    if request.method == "POST":
+        data = request.json
+        profile_data.update(
+            {
+                "date_of_birth": data.get("date_of_birth"),
+                "first_name": data.get("first_name"),
+                "last_name": data.get("last_name"),
+                "email": data.get("email"),
+                "profile_image": data.get(
+                    "profile_image", profile_data["profile_image"]
+                ),
+            }
+        )
+        return profile_data
+    return profile_data
 
 
 @app.route("/api/quests")
@@ -69,27 +115,6 @@ def get_messages():
             "timestamp": "2:12",
         },
     ]
-
-
-@app.route("/api/profile")
-def get_profile():
-    return {
-        "full_name": "Victoria Smith",
-        "first_name": "Victoria",
-        "last_name": "Smith",
-        "email": "vsmith@gmail.com",
-        "profile_image": "images/Victoria-background.png",
-        "type": "Adventurer",
-        "profileComplete": 60,
-        "sections": {
-            "background": 90,
-            "interests": 40,
-            "preferences": 30,
-            "values": 60,
-            "traits": 50,
-            "perspectives": 0,
-        },
-    }
 
 
 @app.route("/api/profile_section_questions")
@@ -168,6 +193,11 @@ def get_profile_section_questions():
             ],
         },
     ]
+
+
+@app.route("/api/avatars")
+def get_avatars():
+    return ["./images/quests.png"]
 
 
 if __name__ == "__main__":
