@@ -103,7 +103,7 @@ const AppContent = () => {
   if (loadingUser || loadingMessages || loadingQuestions) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  const showFooter = location.pathname !== '/';
+  const showFooter = (location.pathname !== '/' && location.pathname !== '/signup');
 
   return (
     <div className="iphone-pro">
