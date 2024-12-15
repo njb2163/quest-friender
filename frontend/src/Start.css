@@ -1,0 +1,75 @@
+.welcome {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: '#EFEBE2'
+}
+
+.start-container {
+    background-color: #00544f;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    backdrop-filter: blur(10px);
+}
+
+.welcome-text {
+    left: 71px;
+    top: 545px;
+    position: absolute;
+    color: #EFEBE2;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.408px;
+    text-transform: uppercase;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.welcome-text.fade-out {
+    opacity: 0;
+}
+
+.quest-logo {
+    left: 117px;
+    top: 350px;
+    position: absolute;
+    width: 183px;
+    height: 153px;
+    flex-shrink: 0;
+}
+
+.auth-buttons {
+    position: absolute;
+    top: 551px;
+    left: 93px;
+    display: flex;
+    gap: 19px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.auth-buttons.visible {
+    opacity: 1;
+}
+
+.auth-button {
+    width: 94px;
+    height: 34px;
+    background: #EFEBE2;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    color: #00544F;
+    text-align: center;
+}
