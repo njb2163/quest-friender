@@ -10,7 +10,7 @@ function ProfileSectionEnd({questionData}) {
     const navigate = useNavigate();
     
     function handleNavigateClick() {
-        navigate(`/profile`);
+        navigate(`/questIntro`);
     }
 
     return (
