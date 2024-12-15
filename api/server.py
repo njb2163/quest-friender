@@ -28,6 +28,39 @@ profile_data = {
     },
 }
 
+quests = {
+    "active_quests": [],
+    "pending_quests": [
+        {
+            "id": 1,
+            "title": "Jungle Bonanza",
+            "time": "Tomorrow at 6:00 PM",
+            "participants": "4",
+            "description": "Quest description",
+            "hint": "HINT",
+            "image": "./images/quests.png",
+        },
+        {
+            "id": 2,
+            "title": "Happy Time",
+            "time": "Today at 4:00 PM",
+            "participants": "2",
+            "description": "Quest description",
+            "hint": "HINT",
+            "image": "./images/quests.png",
+        },
+        {
+            "id": 3,
+            "title": "Cool Fun",
+            "time": "Thursday at 2:00 PM",
+            "participants": "3",
+            "description": "Quest description",
+            "hint": "HINT",
+            "image": "./images/quests.png",
+        },
+    ],
+}
+
 
 @app.route("/api/profile", methods=["GET", "POST"])
 def update_profile():
@@ -51,52 +84,25 @@ def update_profile():
 
 @app.route("/api/quests")
 def get_quests():
-    return {
-        "active_quests": [
-            {
-                "title": "Jungle Bonanza",
-                "time": "Tomorrow at 6:00 PM",
-                "participants": "4",
-                "description": "Quest description",
-                "hint": "HINT",
-                "image": "./images/quests.png",
-            },
-            {
-                "title": "Happy Time",
-                "time": "Today at 4:00 PM",
-                "participants": "2",
-                "description": "Quest description",
-                "hint": "HINT",
-                "image": "./images/quests.png",
-            },
-            {
-                "title": "Cool Fun",
-                "time": "Thursday at 2:00 PM",
-                "participants": "3",
-                "description": "Quest description",
-                "hint": "HINT",
-                "image": "./images/quests.png",
-            },
-        ],
-        "pending_quests": [
-            {
-                "title": "Happy Time",
-                "time": "Today at 4:00 PM",
-                "participants": "2",
-                "description": "Quest description",
-                "hint": "HINT",
-                "image": "./images/quests.png",
-            },
-            {
-                "title": "Cool Fun",
-                "time": "Thursday at 2:00 PM",
-                "participants": "3",
-                "description": "Quest description",
-                "hint": "HINT",
-                "image": "./images/quests.png",
-            },
-        ],
-    }
+    global quests
+    return quests
+
+
+@app.route("/api/quests/join/<title>", methods=["POST"])
+def join_quest(title):
+    global quests
+    quest_to_move = None
+    for quest in quests["pending_quests"]:
+        if quest["title"] == title:
+            quest_to_move = quest
+            quests["pending_quests"].remove(quest)
+            break
+
+    if quest_to_move:
+        quests["active_quests"].append(quest_to_move)
+        return quests
+    else:
+        return quests
 
 
 @app.route("/api/messages")

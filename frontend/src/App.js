@@ -13,6 +13,7 @@ import ProfileSection from './ProfileSection';
 import ProfileSectionIntro from './ProfileSectionIntro';
 import Start from './Start'
 import SignUp from './SignUp';
+import QuestIntro from './QuestIntro';
 
 const AppContent = () => {
   const location = useLocation();
@@ -83,6 +84,10 @@ const AppContent = () => {
   }, []);
   
   useEffect(() => {
+    fetchQuests();
+  }, []);
+
+  const fetchQuests = () => {
     fetch('/api/quests')
       .then(res => {
         if (!res.ok) {
@@ -96,9 +101,8 @@ const AppContent = () => {
       .catch(error => {
         console.error('Error fetching quests:', error);
         setError(error.message);
-        setLoadingMessages(false);
       });
-  }, []);
+  };
 
   if (loadingUser || loadingMessages || loadingQuestions) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -112,13 +116,14 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Start/>} />
           <Route path="/signup" element={<SignUp setUser={setUser}/>} />
+          <Route path="/questIntro" element={<QuestIntro />} />
           <Route path="/profile" element={<Personality user={user} />} />
           <Route path="/profile/:profileSectionName" element={<ProfileSectionIntro questionData={questions}/>} />
           <Route path='/profile/:profileSectionName/quiz' element={<ProfileSection questionData={questions}/>} /> 
           <Route path="/settings" element={<Settings user={user} />} />
           <Route path="/messages" element={<Messages messages={messages}/>} />
           <Route path="/quests" element={<Quests quests={quests} />} />
-          <Route path="/questDetails/:title" element={<QuestDetails />} />
+          <Route path="/questDetails/:title" element={<QuestDetails setQuests={setQuests} />} />
         </Routes>
         {showFooter && <Footer />}
       </div>

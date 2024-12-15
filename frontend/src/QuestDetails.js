@@ -1,12 +1,34 @@
 import './App.css';
 import { useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
-function QuestDetails() {
+function QuestDetails({ setQuests }) {
     const [showHint, setShowHint] = useState(false);
     const { title } = useParams();
     const location = useLocation();
+    const navigate = useNavigate();
     const { description, hint, image } = location.state || {};
+
+
+    const handleJoinQuest = async () => {
+        try {
+            const response = await fetch(`/api/quests/join/${title}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to join quest');
+            }
+            const data = await response.json();
+            setQuests(data);
+            navigate('/quests');
+        } catch (error) {
+            console.error('Error joining quest:', error);
+        }
+    };
 
     return (
         <div className="quest-details-overlap">
@@ -33,6 +55,12 @@ function QuestDetails() {
                         </button>
                     </div>
                 </div>
+                <button 
+                className="join-button"
+                onClick={handleJoinQuest}
+            >
+                Join
+            </button>
                 
                 {showHint && (
                     <div className="quest-details-hint-overlay" onClick={() => setShowHint(false)}>
