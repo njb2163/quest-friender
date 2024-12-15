@@ -10,6 +10,33 @@ logging.basicConfig(
 
 log = logging.getLogger(__name__)
 
+question_response_data = [
+    {
+        "category": "background",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "interests",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "preferences",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "values",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "traits",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "perspectives",
+        "saved_answers": [None, None, None, None, None]
+    }
+]
+
 profile_data = {
     "date_of_birth": "07/27/1999",
     "first_name": "Victoria",
@@ -27,7 +54,6 @@ profile_data = {
         "perspectives": 0,
     },
 }
-
 
 @app.route("/api/profile", methods=["GET", "POST"])
 def update_profile():
@@ -47,7 +73,6 @@ def update_profile():
         )
         return profile_data
     return profile_data
-
 
 @app.route("/api/quests")
 def get_quests():
@@ -97,7 +122,6 @@ def get_quests():
             },
         ],
     }
-
 
 @app.route("/api/messages")
 def get_messages():
@@ -194,11 +218,37 @@ def get_profile_section_questions():
         },
     ]
 
+@app.route('/api/get_question_responses', methods = ['GET'])
+def get_question_response_data():
+    if(request.method == 'GET'):
+        category = request.args.get('category')
+        
+        for item in question_response_data:
+            if item['category'] == category:
+                category_data = item
+                break
+        
+        return jsonify(data = category_data)
+
+@app.route('/api/save_question_responses', methods = ['GET', 'POST'])
+def save_question_responses():
+    global question_response_data
+
+    json_data = request.get_json()
+    category = json_data["category"]
+    question_index = json_data["question_index"]
+    question_response = json_data["question_response"]
+
+    for entry in question_response_data:
+        if entry["category"] == category:
+            entry["saved_answers"][question_index] = question_response
+            break
+
+    return jsonify(data = question_response_data)
 
 @app.route("/api/avatars")
 def get_avatars():
     return ["./images/quests.png"]
-
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=True)
