@@ -382,3 +382,116 @@
     left: 0;
     border-radius: 15px 15px 0px 0px;
 }
+
+/* End Card CSS */
+
+.end-card-block {
+    position: absolute;
+    width: 344px;
+    height: 446px;
+    top: 95px;
+    left: 25px;
+}
+
+.end-bottom-group {
+    position: absolute;
+    width: 344px;
+    height: 248px;
+    top: 198px;
+    left: 0;
+}
+
+.end-block-footer {
+    display: flex;
+    width: 100px;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    position: absolute;
+    top: 190px;
+    left: 123px;
+    right: 135px;
+    z-index: 1;
+    background-color: transparent;
+}
+
+.end-finish-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding:10px;
+    width: 60px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: var(--grey-1000);
+    border-radius: 20px;
+    color: white;
+    border: none;
+    font-weight: var(--body-medium-font-weight);
+}
+
+.end-card-content-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 344px;
+    gap: 20px;
+    padding: 0px 20px 20px;
+    position: absolute;
+    top: 50px;
+    white-space: normal;
+}
+
+.end-card-title {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    width: 70%;
+    text-align: center;
+}
+
+.end-card-title-wrapper {
+    position: relative;
+    font-family: var(--t2-semibold-font-family);
+    font-weight: var(--t2-semibold-font-weight);
+    color: var(--grey-1000);
+    font-size: large;
+    line-height: var(--t2-semibold-line-height);
+    font-style: var(--t2-semibold-font-style);
+    letter-spacing: 0.5px;
+}
+
+.end-card-blurb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+.end-card-blurb-wrapper {
+    align-self: stretch;
+    margin-top: -1.00px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #1f2429cc;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.end-card-background {
+    position: absolute;
+    width: 344px;
+    height: 285px;
+    top: 0;
+    left: 0;
+    background-color: #1f24290d;
+    border-radius: 24px;
+    border: 1px solid;
+    border-color: #1f242933;
+    box-shadow: 0px 20px 25px #00000040;
+}

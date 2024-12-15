@@ -103,7 +103,7 @@ function ProfileSection({questionData}) {
 
     function handleNextClick() {
         if (index >= 4) {
-            navigate('/profile'); 
+            navigate(`/profile/${profileSectionName}/end`);
         }
         else {
             setIndex(prevIndex => prevIndex + 1); 

@@ -1,6 +1,5 @@
 from flask import Flask
-from flask import render_template
-from flask import Response, request, jsonify
+from flask import request, jsonify
 
 app = Flask(__name__)
 
@@ -11,6 +10,22 @@ question_response_data = [
     },
     {
         "category": "interests",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "preferences",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "values",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "traits",
+        "saved_answers": [None, None, None, None, None]
+    },
+    {
+        "category": "perspectives",
         "saved_answers": [None, None, None, None, None]
     }
 ]

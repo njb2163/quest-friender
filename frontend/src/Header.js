@@ -40,6 +40,18 @@ function Header() {
                 return 'TRAITS';
             case '/profile/perspectives/quiz':
                 return 'PERSPECTIVES';
+            case '/profile/background/end':
+                return 'BACKGROUND';
+            case '/profile/interests/end':
+                return 'INTERESTS';
+            case '/profile/preferences/end':
+                return 'PREFERENCES';
+                case '/profile/values/end':
+                return 'VALUES';
+            case '/profile/traits/end':
+                return 'TRAITS';
+            case '/profile/perspectives/end':
+                    return 'PERSPECTIVES';
             default:
                 if (location.pathname.includes('/questDetails')) {
                     return 'QUEST DETAILS';

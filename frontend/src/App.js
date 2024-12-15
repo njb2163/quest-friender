@@ -11,6 +11,7 @@ import Settings from './Settings';
 import Quests from './Quests';
 import ProfileSection from './ProfileSection';
 import ProfileSectionIntro from './ProfileSectionIntro';
+import ProfileSectionEnd from './ProfileSectionEnd';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -110,7 +111,8 @@ function App() {
             <Routes>
               <Route path="/profile" element={<Personality user={user} />} />
               <Route path="/profile/:profileSectionName" element={<ProfileSectionIntro questionData={questions}/>} />
-              <Route path='/profile/:profileSectionName/quiz' element = {<ProfileSection questionData={questions}/>} /> 
+              <Route path="/profile/:profileSectionName/quiz" element = {<ProfileSection questionData={questions}/>} /> 
+              <Route path="/profile/:profileSectionName/end" element = {<ProfileSectionEnd questionData={questions}/>} />
               <Route path="/settings" element={<Settings user={user} />} />
               <Route path="/messages" element={<Messages messages={messages}/>} />
               <Route path="/quests" element={<Quests quests={quests} />} />
