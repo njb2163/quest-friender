@@ -227,33 +227,33 @@ def get_profile_section_questions():
                     "id": 1,
                     "question_content": "How important is it for you to maintain a work-life balance? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 2,
                     "question_content": "Describe an issue or cause you deeply care about.",
                     "multiple_choice": False,
-                    "options": []
+                    "options": [],
                 },
                 {
                     "id": 3,
                     "question_content": "How much do you prioritize family and friends? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 4,
                     "question_content": "How important is it for you to contribute to your community? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 5,
                     "question_content": "What personal value do you find yourself standing by the most? (0-4)",
                     "multiple_choice": False,
-                    "options": []
-                }
-            ]
+                    "options": [],
+                },
+            ],
         },
         {
             "category": "perspectives",
@@ -264,33 +264,33 @@ def get_profile_section_questions():
                     "id": 1,
                     "question_content": "Do you believe technology is shaping society in a positive way? (0-4)",
                     "multiple_choice": False,
-                    "options": []
+                    "options": [],
                 },
                 {
                     "id": 2,
                     "question_content": "How important is the balance between freedom and responsibility? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 3,
                     "question_content": "What is the most effective way to resolve conflicts?",
                     "multiple_choice": False,
-                    "options": []
+                    "options": [],
                 },
                 {
                     "id": 4,
                     "question_content": "How important is climate change for future generations? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 5,
-                    "question_content":  "How should education adapt to modern challenges?",
+                    "question_content": "How should education adapt to modern challenges?",
                     "multiple_choice": False,
-                    "options": []
-                }
-            ]
+                    "options": [],
+                },
+            ],
         },
         {
             "category": "preferences",
@@ -301,33 +301,33 @@ def get_profile_section_questions():
                     "id": 1,
                     "question_content": "How much do you prefer spending time alone versus with others? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 2,
                     "question_content": "How much do you prefer indoor activities over outdoor activities? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 3,
                     "question_content": "What type of music do you most prefer?",
                     "multiple_choice": False,
-                    "options": []
+                    "options": [],
                 },
                 {
                     "id": 4,
                     "question_content": "How much do you enjoy trying new foods or cuisines? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 5,
                     "question_content": "How do you prefer routine vs. spontaneity in daily life?",
                     "multiple_choice": False,
-                    "options": []
-                }
-            ]
+                    "options": [],
+                },
+            ],
         },
         {
             "category": "traits",
@@ -338,34 +338,34 @@ def get_profile_section_questions():
                     "id": 1,
                     "question_content": "How extroverted do you consider yourself to be? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 2,
                     "question_content": "How organized or structured are you in your daily life? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 3,
                     "question_content": "How would you describe your level of empathy towards others?",
                     "multiple_choice": False,
-                    "options": []
+                    "options": [],
                 },
                 {
                     "id": 4,
                     "question_content": "How open are you to new ideas or experiences? (0-4)",
                     "multiple_choice": True,
-                    "options": ["0", "1", "2", "3", "4"]
+                    "options": ["0", "1", "2", "3", "4"],
                 },
                 {
                     "id": 5,
                     "question_content": "Do you consider yourself more of a thinker or a doer?",
                     "multiple_choice": False,
-                    "options": []
-                }
-            ]
-        }
+                    "options": [],
+                },
+            ],
+        },
     ]
 
 
@@ -401,7 +401,14 @@ def save_question_responses():
 
 @app.route("/api/avatars")
 def get_avatars():
-    return ["./images/quests.png"]
+    return [
+        "./images/avatars/bear.png",
+        "./images/avatars/chicken.png",
+        "./images/avatars/dog.png",
+        "./images/avatars/meerkat.png",
+        "./images/avatars/panda.png",
+        "./images/avatars/rabbit.png",
+    ]
 
 
 if __name__ == "__main__":
