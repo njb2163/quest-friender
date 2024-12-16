@@ -376,14 +376,14 @@
 
 .intro-card-image {
     position: absolute;
-    width: 344px;
-    height: 238px;
-    top: 0;
-    left: 0;
+    width: 195px;
+    height: 195px;
+    top: -10px; 
+    left: 50%;   
+    transform: translateX(-50%);
     border-radius: 15px 15px 0px 0px;
 }
 
-/* End Card CSS */
 
 .end-card-block {
     position: absolute;
