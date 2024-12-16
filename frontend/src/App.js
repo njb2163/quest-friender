@@ -20,7 +20,8 @@ const AppContent = () => {
   const location = useLocation();
   const [user, setUser] = useState(null);
   const [messages, setMessages] = useState([]);
-  const [quests, setQuests] = useState({});
+  const [quests, setQuests] = useState(null);
+  const [loadingQuests, setLoadingQuests] = useState(true);
   const [questions, setQuestions] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
   const [loadingMessages, setLoadingMessages] = useState(true);
@@ -89,6 +90,7 @@ const AppContent = () => {
   }, []);
 
   const fetchQuests = () => {
+    setLoadingQuests(true);
     fetch('/api/quests')
       .then(res => {
         if (!res.ok) {
@@ -98,10 +100,12 @@ const AppContent = () => {
       })
       .then(data => {
         setQuests(data);
+        setLoadingQuests(false);
       })
       .catch(error => {
         console.error('Error fetching quests:', error);
         setError(error.message);
+        setLoadingQuests(false);
       });
   };
 
@@ -124,7 +128,7 @@ const AppContent = () => {
           <Route path='/profile/:profileSectionName/quiz' element={<ProfileSection questionData={questions}/>} /> 
           <Route path="/settings" element={<Settings user={user} />} />
           <Route path="/messages" element={<Messages messages={messages}/>} />
-          <Route path="/quests" element={<Quests quests={quests} />} />
+          <Route path="/quests" element={<Quests quests={loadingQuests ? null : quests} />} />
           <Route path="/questDetails/:title" element={<QuestDetails setQuests={setQuests} />} />
         </Routes>
         {showFooter && <Footer />}

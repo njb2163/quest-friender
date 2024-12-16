@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 import './Quests.css';
 
 function Quests({ quests }) {
+    // Add null check for quests
+    if (!quests || typeof quests !== 'object') {
+        return <div>Loading quests...</div>;
+    }
 
-    const active_quests = quests["active_quests"]
-    const pending_quests = quests["pending_quests"]
-    
+    const active_quests = quests.active_quests || [];
+    const pending_quests = quests.pending_quests || [];
 
     const renderQuestCard = (quest, type) => {
+        if (!quest) return null;
+        
         return (
             <Link 
                 to={`/questDetails/${quest.title}`}
@@ -24,7 +29,7 @@ function Quests({ quests }) {
                     <div className="quest-title">{quest.title}!</div>
                     <div className="quest-time">{quest.time}</div>
                     <div className="quest-participants">
-                        with Bob and {parseInt(quest.participants) - 1} others
+                        {quest.participants}
                     </div>
                 </div>
             </Link>
@@ -33,10 +38,10 @@ function Quests({ quests }) {
 
     return (
         <div className="quests-container">
-            {pending_quests.length > 0 && (
+            {Array.isArray(pending_quests) && pending_quests.length > 0 && (
                 <div className="quest-section">
                     <div className="section-header">
-                        <div className="label">Pending...</div>
+                        <div className="label">Discover</div>
                         <div className="section-line"></div>
                     </div>
                     <div className="quests-list">
@@ -49,10 +54,10 @@ function Quests({ quests }) {
                 </div>
             )}
 
-            {active_quests.length > 0 && (
+            {Array.isArray(active_quests) && active_quests.length > 0 && (
                 <div className="quest-section">
                     <div className="section-header">
-                        <div className="label">Active...</div>
+                        <div className="label">Joined</div>
                         <div className="section-line"></div>
                     </div>
                     <div className="quests-list">

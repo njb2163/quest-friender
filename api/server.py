@@ -11,30 +11,12 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 question_response_data = [
-    {
-        "category": "background",
-        "saved_answers": [None, None, None, None, None]
-    },
-    {
-        "category": "interests",
-        "saved_answers": [None, None, None, None, None]
-    },
-    {
-        "category": "preferences",
-        "saved_answers": [None, None, None, None, None]
-    },
-    {
-        "category": "values",
-        "saved_answers": [None, None, None, None, None]
-    },
-    {
-        "category": "traits",
-        "saved_answers": [None, None, None, None, None]
-    },
-    {
-        "category": "perspectives",
-        "saved_answers": [None, None, None, None, None]
-    }
+    {"category": "background", "saved_answers": [None, None, None, None, None]},
+    {"category": "interests", "saved_answers": [None, None, None, None, None]},
+    {"category": "preferences", "saved_answers": [None, None, None, None, None]},
+    {"category": "values", "saved_answers": [None, None, None, None, None]},
+    {"category": "traits", "saved_answers": [None, None, None, None, None]},
+    {"category": "perspectives", "saved_answers": [None, None, None, None, None]},
 ]
 
 profile_data = {
@@ -60,30 +42,39 @@ quests = {
     "pending_quests": [
         {
             "id": 1,
-            "title": "Jungle Bonanza",
+            "title": "Azon Game Battle",
             "time": "Tomorrow at 6:00 PM",
-            "participants": "4",
-            "description": "Quest description",
+            "participants": "with Bob and 2 others",
+            "description": "Battle it out to see who will be the winner of the Azon Games!",
             "hint": "HINT",
-            "image": "./images/quests.png",
+            "image": "./images/quests/azon.jpeg",
         },
         {
             "id": 2,
-            "title": "Happy Time",
-            "time": "Today at 4:00 PM",
-            "participants": "2",
-            "description": "Quest description",
+            "title": "World Quest",
+            "time": "Tomorrow at 7:30 PM",
+            "participants": "with Andy and 4 others",
+            "description": "Test your knowledge of the world in this fun game show.",
             "hint": "HINT",
-            "image": "./images/quests.png",
+            "image": "./images/quests/world-quest.png",
         },
         {
             "id": 3,
-            "title": "Cool Fun",
-            "time": "Thursday at 2:00 PM",
-            "participants": "3",
-            "description": "Quest description",
+            "title": "City Explorer",
+            "time": "Monday at 2:00 PM",
+            "participants": "with Kayla and 1 other",
+            "description": "Walk through the hidden gems of downtown, snap photos of street art and interesting architecture together.",
             "hint": "HINT",
-            "image": "./images/quests.png",
+            "image": "./images/quests/city-explorer.png",
+        },
+        {
+            "id": 4,
+            "title": "Jungle Bonanza",
+            "time": "Thursday at 1:30 PM",
+            "participants": "with Kyle",
+            "description": "There's a rumble in the jungle, beware...",
+            "hint": "HINT",
+            "image": "./images/quests/jungle-bonanza.jpeg",
         },
     ],
 }
@@ -108,6 +99,7 @@ def update_profile():
         return profile_data
     return profile_data
 
+
 @app.route("/api/quests")
 def get_quests():
     global quests
@@ -129,6 +121,7 @@ def join_quest(title):
         return quests
     else:
         return quests
+
 
 @app.route("/api/messages")
 def get_messages():
@@ -225,19 +218,21 @@ def get_profile_section_questions():
         },
     ]
 
-@app.route('/api/get_question_responses', methods = ['GET'])
+
+@app.route("/api/get_question_responses", methods=["GET"])
 def get_question_response_data():
-    if(request.method == 'GET'):
-        category = request.args.get('category')
-        
+    if request.method == "GET":
+        category = request.args.get("category")
+
         for item in question_response_data:
-            if item['category'] == category:
+            if item["category"] == category:
                 category_data = item
                 break
-        
-        return jsonify(data = category_data)
 
-@app.route('/api/save_question_responses', methods = ['GET', 'POST'])
+        return jsonify(data=category_data)
+
+
+@app.route("/api/save_question_responses", methods=["GET", "POST"])
 def save_question_responses():
     global question_response_data
 
@@ -251,11 +246,13 @@ def save_question_responses():
             entry["saved_answers"][question_index] = question_response
             break
 
-    return jsonify(data = question_response_data)
+    return jsonify(data=question_response_data)
+
 
 @app.route("/api/avatars")
 def get_avatars():
     return ["./images/quests.png"]
+
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=True)

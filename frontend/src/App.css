@@ -471,6 +471,17 @@ header {
   left: 53px;
   background-color: #d9d9d9;
   border-radius: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.iphone-pro .ellipse img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  display: block;
 }
 
 .iphone-pro .text-wrapper-5 {
@@ -620,7 +631,8 @@ header {
   align-items: center;
   width: 100%;
   max-width: 480px;
-  margin-top: 180px;
+  margin-top: 120px;
+  padding-bottom: 80px;
 }
 
 .quest-details-icon {

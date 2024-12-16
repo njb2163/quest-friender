@@ -31,7 +31,7 @@ function ProfileSectionIntro({questionData}) {
                             </div>
                             <div className="intro-card-background"></div>
                         </div>
-                    <img className="intro-card-image" src={require(`./${"images/Interests-thumbnail.png"}`)} />
+                    <img className="intro-card-image" src={require(`./${"images/icons/interests-icon.png"}`)} />
                 </div>
             </div>
         </div>
