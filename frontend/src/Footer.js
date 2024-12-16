@@ -1,9 +1,9 @@
 import './App.css';
 import { Link, useLocation } from 'react-router-dom';
-import quests from './images/compass.png';
-import messages from './images/envelope.png';
-import settings from './images/settings.png';
-import profile from './images/user.png';
+import quests from './images/Icon_Compass.png';
+import messages from './images/Icon_Vector.png';
+import settings from './images/Icon_Settings.png';
+import profile from './images/Icon_User.png';
 
 function Footer() {
     const location = useLocation();
