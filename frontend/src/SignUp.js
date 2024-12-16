@@ -10,31 +10,68 @@ function SignUp({ setUser }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [formError, setFormError] = useState('');
+    const [avatarsLoaded, setAvatarsLoaded] = useState(0);
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [dob, setDOB] = useState("");
 
-
     useEffect(() => {
-        fetch('/api/avatars')
-            .then(response => {
+        let mounted = true;
+
+        const fetchAvatars = async () => {
+            try {
+                const response = await fetch('/api/avatars');
                 if (!response.ok) {
                     throw new Error('Failed to fetch avatars');
                 }
-                return response.json();
-            })
-            .then(data => {
-                setAvatarOptions(data);
-                setLoading(false);
-            })
-            .catch(error => {
+                const data = await response.json();
+                
+                if (mounted) {
+                    setAvatarOptions(data);
+                    // Don't set loading to false yet - wait for preloading
+                    preloadImages(data);
+                }
+            } catch (error) {
                 console.error('Error fetching avatars:', error);
-                setError(error.message);
-                setLoading(false);
-            });
+                if (mounted) {
+                    setError(error.message);
+                    setLoading(false);
+                }
+            }
+        };
+
+        fetchAvatars();
+
+        return () => {
+            mounted = false;
+        };
     }, []);
+
+    const preloadImages = (avatarUrls) => {
+        let loadedCount = 0;
+        const totalImages = avatarUrls.length;
+
+        avatarUrls.forEach(url => {
+            const img = new Image();
+            img.onload = () => {
+                loadedCount++;
+                setAvatarsLoaded(loadedCount);
+                if (loadedCount === totalImages) {
+                    setLoading(false);
+                }
+            };
+            img.onerror = () => {
+                loadedCount++;
+                setAvatarsLoaded(loadedCount);
+                if (loadedCount === totalImages) {
+                    setLoading(false);
+                }
+            };
+            img.src = require(`${url}`);
+        });
+    };
 
     const handleAvatarSelect = (avatar) => {
         setSelectedAvatar(avatar);
@@ -68,7 +105,7 @@ function SignUp({ setUser }) {
             }
 
             const updatedProfile = await response.json();
-            setUser(updatedProfile)
+            setUser(updatedProfile);
             navigate('/profile/background');
         } catch (error) {
             console.error('Error updating profile:', error);
@@ -78,10 +115,9 @@ function SignUp({ setUser }) {
 
     return (
         <div className="signup-container">
-
             <div className="avatar-container">
                 <div className="avatar-circle">
-                    {selectedAvatar && (
+                    {selectedAvatar && !loading && (
                         <img 
                             src={require(`${selectedAvatar}`)} 
                             alt="Selected avatar" 
@@ -91,7 +127,7 @@ function SignUp({ setUser }) {
                 </div>
                 <div 
                     className="plus-button"
-                    onClick={() => setShowAvatarModal(true)}
+                    onClick={() => !loading && setShowAvatarModal(true)}
                 />
             </div>
 
@@ -143,7 +179,7 @@ function SignUp({ setUser }) {
                         <div className="avatar-options">
                             {error && <div>Error loading avatars: {error}</div>}
                             {loading ? (
-                                <div>Loading avatars...</div>
+                                <div>Loading avatars... ({avatarsLoaded} of {avatarOptions.length})</div>
                             ) : (
                                 avatarOptions.map((avatar, index) => (
                                     <img
