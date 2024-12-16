@@ -9,8 +9,12 @@ function ProfileSectionEnd({questionData}) {
     const sectionData = questionData.find(item => item.category === profileSectionName);
     const navigate = useNavigate();
     
-    function handleNavigateClick() {
+    function handleMatchClick() {
         navigate(`/questIntro`);
+    }
+
+    function handleNextClick() {
+        navigate(sectionData.next_category)
     }
 
     return (
@@ -23,11 +27,12 @@ function ProfileSectionEnd({questionData}) {
                                     <div className="end-card-title-wrapper">Thank you for completing the {sectionData.category} section!</div>
                                 </div>
                                 <div className="end-card-blurb">
-                                    <p className="end-card-blurb-wrapper"> We will now use this to match you with quest partners. Go to the quest page to see any matches! </p>
+                                    <p className="end-card-blurb-wrapper"> We will now use this to match you with quest partners. Press the next button to navigate to next section or press match to begin the quest matching process.</p>
                                 </div>
                             </div>
                             <div className="end-block-footer"> 
-                                <button className="end-finish-button" onClick = {() => handleNavigateClick()}>Finish</button>
+                                <button className="end-next-button" onClick = {() => handleNextClick()}>Next</button>
+                                <button className="end-match-button" onClick = {() => handleMatchClick()}>Match</button>
                             </div>
                             <div className="end-card-background"></div>
                         </div>
