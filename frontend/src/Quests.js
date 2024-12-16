@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Quests.css';
 
 function Quests({ quests }) {
-    // Add null check for quests
     if (!quests || typeof quests !== 'object') {
         return <div>Loading quests...</div>;
     }
