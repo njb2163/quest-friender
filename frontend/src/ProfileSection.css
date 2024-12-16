@@ -403,19 +403,17 @@
 
 .end-block-footer {
     display: flex;
-    width: 100px;
-    align-items: center;
+    width: 100%;
+    justify-content: center;
     gap: 20px;
     padding: 20px;
     position: absolute;
-    top: 190px;
-    left: 123px;
-    right: 135px;
+    top: 205px;
     z-index: 1;
     background-color: transparent;
 }
 
-.end-finish-button {
+.end-match-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -431,12 +429,29 @@
     font-weight: var(--body-medium-font-weight);
 }
 
+.end-next-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding:10px;
+    width: 60px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: var(--grey-1000);
+    border-radius: 20px;
+    color: white;
+    border: none;
+    font-weight: var(--body-medium-font-weight);
+}
+
+
 .end-card-content-block {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 344px;
-    gap: 20px;
+    gap: 15px;
     padding: 0px 20px 20px;
     position: absolute;
     top: 50px;

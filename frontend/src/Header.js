@@ -51,7 +51,9 @@ function Header() {
             case '/profile/traits/end':
                 return 'TRAITS';
             case '/profile/perspectives/end':
-                    return 'PERSPECTIVES';
+                return 'PERSPECTIVES';
+            case '/questIntro':
+                return 'MATCHING';
             default:
                 if (location.pathname.includes('/questDetails')) {
                     return 'QUEST DETAILS';
