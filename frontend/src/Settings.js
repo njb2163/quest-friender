@@ -1,6 +1,12 @@
 import './Settings.css';
+import { useNavigate } from 'react-router-dom';
 
 function Settings({ user }) {
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        navigate('/');
+    };
     return (
         <div className="settings-container">
             <div className="profile-section">
@@ -34,7 +40,7 @@ function Settings({ user }) {
                 </div>
             </div>
 
-            <div className="logout-button">
+            <div className="logout-button" onClick={handleLogOut}>
                 Log Out
             </div>
         </div>
