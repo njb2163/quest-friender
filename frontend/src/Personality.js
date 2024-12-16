@@ -7,53 +7,44 @@ function Personality({ user }) {
   return (
     <div>
       <div className="overlap">
-        <img className="profile-background-img" src={require(`./${"images/Victoria-background.png"}`)} />
+      <div className="profile-background-wrapper">
+          <img className="profile-background-img" src={require(`./${"images/adventurer.png"}`)} />
+          <div className="profile-background-gradient"></div>
+        </div>
         <div className="group">
           <div className="text-wrapper">{user.first_name}</div>
           <div className="text-wrapper-2">{user.type}</div>
         </div>
         <div className="text-wrapper-3">Profile complete {user.profileComplete}%</div>
       </div>
-      <Link to = "/profile/background" className="overlap-2">
+      <Link to = "/profile/background" className="personality-overlap personality-background-container">
         <div className="text-wrapper-4">Background</div>
-        <div className="ellipse">
-          <img src={require(`./${"images/Background-thumbnail.png"}`)} />
-        </div>
+          <img className="profile-pattern" src={require(`./${"images/icons/background-icon.png"}`)} />
         <div className="text-wrapper-5">{user.sections.background}%</div>
       </Link>
-      <Link to = "/profile/interests" className="overlap-3">
+      <Link to = "/profile/interests" className="personality-overlap personality-interests-container">
         <div className="text-wrapper-6">Interests</div>
-        <div className="ellipse">
-          <img src={require(`./${"images/Interests-thumbnail.png"}`)} />
-        </div>
+          <img className="profile-pattern" src={require(`./${"images/icons/interests-icon.png"}`)} />
         <div className="text-wrapper-5">{user.sections.interests}%</div>
       </Link>
-      <Link to = "/profile/preferences" className="overlap-4">
+      <Link to = "/profile/preferences" className="personality-overlap personality-preferences-container">
         <div className="text-wrapper-4">Preferences</div>
-        <div className="ellipse">
-          <img src={require(`./${"images/Preferences-thumbnail.png"}`)} />
-        </div>
+          <img className="profile-pattern" src={require(`./${"images/icons/preferences-icon.png"}`)} />
         <div className="text-wrapper-5">{user.sections.preferences}%</div>
       </Link>
-      <Link to = "/profile/values"  className="overlap-5">
+      <Link to = "/profile/values"  className="personality-overlap personality-values-container">
         <div className="text-wrapper-7">Values</div>
-        <div className="ellipse">
-          <img src={require(`./${"images/Values-thumbnail.png"}`)} />
-        </div>
+          <img className="profile-pattern" src={require(`./${"images/icons/values-icon.png"}`)} />
         <div className="text-wrapper-5">{user.sections.values}%</div>
       </Link>
-      <Link to = "/profile/traits" className="overlap-6">
+      <Link to = "/profile/traits" className="personality-overlap personality-traits-container">
         <div className="text-wrapper-8">Traits</div>
-        <div className="ellipse">
-          <img src={require(`./${"images/Traits-thumbnail.png"}`)} />
-        </div>
+          <img className="profile-pattern" src={require(`./${"images/icons/traits-icon.png"}`)} />
         <div className="text-wrapper-5">{user.sections.traits}%</div>
       </Link>
-      <Link to = "/profile/perspectives" className="overlap-7">
+      <Link to = "/profile/perspectives" className="personality-overlap personality-perspectives-container">
         <div className="text-wrapper-9">Perspectives</div>
-        <div className="ellipse">
-          <img src={require(`./${"images/Perspectives-thumbnail.png"}`)} />
-        </div>
+          <img className="profile-pattern" src={require(`./${"images/icons/perspectives-icon.png"}`)} />
         <div className="text-wrapper-5">{user.sections.perspectives}%</div>
       </Link>
     </div>

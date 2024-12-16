@@ -21,7 +21,7 @@ function Start() {
     };
 
     const handleSignIn = () => {
-        navigate('/signin');
+        navigate('/profile');
     };
 
     return (
